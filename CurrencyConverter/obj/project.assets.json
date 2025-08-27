@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\68691\\source\\repos\\CurrencyConverter\\CurrencyConverter\\CurrencyConverter.csproj",
+      "projectUniqueName": "C:\\Users\\68691\\OneDrive - Syddansk Erhvervsskole\\Documents\\GitHub\\valuta-omregner\\CurrencyConverter\\CurrencyConverter.csproj",
       "projectName": "CurrencyConverter",
-      "projectPath": "C:\\Users\\68691\\source\\repos\\CurrencyConverter\\CurrencyConverter\\CurrencyConverter.csproj",
+      "projectPath": "C:\\Users\\68691\\OneDrive - Syddansk Erhvervsskole\\Documents\\GitHub\\valuta-omregner\\CurrencyConverter\\CurrencyConverter.csproj",
       "packagesPath": "C:\\Users\\68691\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\68691\\source\\repos\\CurrencyConverter\\CurrencyConverter\\obj\\",
+      "outputPath": "C:\\Users\\68691\\OneDrive - Syddansk Erhvervsskole\\Documents\\GitHub\\valuta-omregner\\CurrencyConverter\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
