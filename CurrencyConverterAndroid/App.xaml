@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CurrencyConverterAndroid"
+             x:Class="CurrencyConverterAndroid.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- Warm & Homey Color Palette -->
+            <Color x:Key="Primary">#8B6F47</Color>
+            <Color x:Key="PrimaryLight">#A5875F</Color>
+            <Color x:Key="PrimaryDark">#6B5B47</Color>
+            <Color x:Key="Secondary">#D2691E</Color>
+            <Color x:Key="Accent">#CD853F</Color>
+            <Color x:Key="Success">#2E7D32</Color>
+            <Color x:Key="Warning">#F57C00</Color>
+
+            <!-- Warm Neutrals -->
+            <Color x:Key="WarmWhite">#FFFEF7</Color>
+            <Color x:Key="CreamLight">#FBF8F1</Color>
+            <Color x:Key="CreamMedium">#F7F3E9</Color>
+            <Color x:Key="CreamDark">#E8DCC6</Color>
+            <Color x:Key="WarmGray">#B5A492</Color>
+            <Color x:Key="TextPrimary">#6B5B47</Color>
+            <Color x:Key="TextSecondary">#9B8B73</Color>
+
+            <!-- Legacy Color Mappings for Compatibility -->
+            <Color x:Key="Gray100">#F7F3E9</Color>
+            <Color x:Key="Gray300">#E8DCC6</Color>
+            <Color x:Key="Gray500">#B5A492</Color>
+            <Color x:Key="Gray700">#6B5B47</Color>
+            <Color x:Key="Gray900">#4A3F35</Color>
+
+            <!-- Warm Button Styles -->
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="TextColor" Value="{StaticResource WarmWhite}" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HeightRequest" Value="52" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource PrimaryDark}" />
+                                    <Setter Property="Scale" Value="0.96" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource CreamDark}" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+                <Setter Property="CornerRadius" Value="12" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontAttributes" Value="None" />
+                <Setter Property="HeightRequest" Value="42" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                    <Setter Property="TextColor" Value="{StaticResource WarmWhite}" />
+                                    <Setter Property="Scale" Value="0.96" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <Style x:Key="AccentButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+                <Setter Property="TextColor" Value="{StaticResource WarmWhite}" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#B8571A" />
+                                    <Setter Property="Scale" Value="0.94" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <!-- Warm Border Styles -->
+            <Style x:Key="CardBorderStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{StaticResource WarmWhite}" />
+                <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="Stroke" Value="Transparent" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 16" />
+            </Style>
+
+            <Style x:Key="InputBorderStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{StaticResource CreamMedium}" />
+                <Setter Property="StrokeThickness" Value="2" />
+                <Setter Property="Stroke" Value="{StaticResource CreamDark}" />
+                <Setter Property="StrokeShape" Value="RoundRectangle 14" />
+            </Style>
+
+            <!-- Warm Entry Styles -->
+            <Style x:Key="ModernEntryStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource WarmGray}" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="WarmEntryStyle" TargetType="Entry">
+                <Setter Property="BackgroundColor" Value="{StaticResource CreamMedium}" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource WarmGray}" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <!-- Warm Picker Styles -->
+            <Style x:Key="ModernPickerStyle" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+                <Setter Property="TitleColor" Value="{StaticResource WarmGray}" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <Style x:Key="WarmPickerStyle" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="{StaticResource CreamMedium}" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+                <Setter Property="TitleColor" Value="{StaticResource WarmGray}" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+
+            <!-- Label Styles -->
+            <Style x:Key="HeadingStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="22" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+            </Style>
+
+            <Style x:Key="SubheadingStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+            </Style>
+
+            <Style x:Key="BodyStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource TextSecondary}" />
+            </Style>
+
+            <Style x:Key="CaptionStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{StaticResource TextSecondary}" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

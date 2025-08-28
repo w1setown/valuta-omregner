@@ -1,0 +1,41 @@
+# Ignore build output and user-specific files
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDE directories
+.vs/
+.vscode/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# NuGet
+packages/
+*.nupkg
+project.lock.json
+project.assets.json
+
+# MAUI/Android specific
+Platforms/Android/Resources/Resource.designer.cs
+Platforms/Android/obj/
+Platforms/Android/bin/
+
+# Crash logs
+*.log
+
+# Local secrets
+secrets.json
+
+# Others
+*.db
+*.db-shm
+*.db-wal
+
+# Rider
+.idea/
+*.sln.iml
