@@ -1,232 +1,266 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CurrencyConverterAndroid"
              x:Class="CurrencyConverterAndroid.MainPage"
-             BackgroundColor="#F8F9FA">
+             BackgroundColor="#FBF8F1">
 
     <Grid RowDefinitions="Auto,*,Auto">
-        
+
         <!-- Header Section -->
         <Border Grid.Row="0" 
-                BackgroundColor="#6366F1" 
+                BackgroundColor="#8B6F47" 
                 StrokeThickness="0"
                 Stroke="Transparent"
-                Margin="20,20,20,10">
+                Margin="16,20,16,12">
             <Border.StrokeShape>
-                <RoundRectangle CornerRadius="15" />
+                <RoundRectangle CornerRadius="20" />
             </Border.StrokeShape>
-            <VerticalStackLayout Spacing="10" Padding="20">
-                <Label Text="💱 Valutaomregner" 
-                       FontSize="28" 
+            <Border.Shadow>
+                <Shadow Brush="#40000000" Offset="0,4" Radius="8" Opacity="0.15" />
+            </Border.Shadow>
+            <VerticalStackLayout Spacing="8" Padding="24">
+                <Label Text="Valutaomregner" 
+                       FontSize="26" 
                        FontAttributes="Bold"
-                       TextColor="White"
+                       TextColor="#FBF8F1"
                        HorizontalOptions="Center" />
                 <Label x:Name="UpdatedLabel" 
                        Text="Opdaterer..." 
-                       FontSize="12" 
-                       TextColor="#E0E7FF"
+                       FontSize="13" 
+                       TextColor="#E8DCC6"
                        HorizontalOptions="Center" />
             </VerticalStackLayout>
         </Border>
 
         <!-- Main Content with Tab View -->
-        <ScrollView Grid.Row="1" Padding="20,0">
-            <VerticalStackLayout Spacing="15">
-                
+        <ScrollView Grid.Row="1" Padding="16,0">
+            <VerticalStackLayout Spacing="16">
+
                 <!-- Tab Navigation -->
-                <Border BackgroundColor="White" 
+                <Border BackgroundColor="#F7F3E9" 
                         StrokeThickness="0"
                         Stroke="Transparent">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12" />
+                        <RoundRectangle CornerRadius="18" />
                     </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="#30000000" Offset="0,2" Radius="6" Opacity="0.1" />
+                    </Border.Shadow>
                     <Grid ColumnDefinitions="*,*,*,*" 
-                          Padding="8"
+                          Padding="6"
                           ColumnSpacing="4">
-                        
+
                         <Button Grid.Column="0"
                                 x:Name="ConverterTabButton"
-                                Text="💰 Omregn" 
-                                BackgroundColor="#6366F1"
-                                TextColor="White"
-                                CornerRadius="8"
-                                FontSize="12"
-                                HeightRequest="40"
-                                Clicked="OnConverterTabClicked" />
-                        
+                                Text="Omregn" 
+                                BackgroundColor="#8B6F47"
+                                TextColor="#FBF8F1"
+                                CornerRadius="12"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                HeightRequest="42"
+                                Clicked="OnConverterTabClicked">
+                            <Button.Shadow>
+                                <Shadow Brush="#40000000" Offset="0,2" Radius="4" Opacity="0.2" />
+                            </Button.Shadow>
+                        </Button>
+
                         <Button Grid.Column="1"
                                 x:Name="CurrenciesTabButton"
-                                Text="📋 Valutaer" 
-                                BackgroundColor="#E5E7EB"
-                                TextColor="#6B7280"
-                                CornerRadius="8"
-                                FontSize="12"
-                                HeightRequest="40"
+                                Text="Valuta" 
+                                BackgroundColor="#E8DCC6"
+                                TextColor="#6B5B47"
+                                CornerRadius="12"
+                                FontSize="13"
+                                FontAttributes="None"
+                                HeightRequest="42"
                                 Clicked="OnCurrenciesTabClicked" />
-                        
+
                         <Button Grid.Column="2"
                                 x:Name="RatesTabButton"
-                                Text="📊 Kurser" 
-                                BackgroundColor="#E5E7EB"
-                                TextColor="#6B7280"
-                                CornerRadius="8"
-                                FontSize="12"
-                                HeightRequest="40"
+                                Text="Kurs" 
+                                BackgroundColor="#E8DCC6"
+                                TextColor="#6B5B47"
+                                CornerRadius="12"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                HeightRequest="42"
                                 Clicked="OnRatesTabClicked" />
-                        
+
                         <Button Grid.Column="3"
                                 x:Name="RefreshTabButton"
-                                Text="🔄 Opdater" 
-                                BackgroundColor="#E5E7EB"
-                                TextColor="#6B7280"
-                                CornerRadius="8"
-                                FontSize="12"
-                                HeightRequest="40"
+                                Text="Opdater" 
+                                BackgroundColor="#E8DCC6"
+                                TextColor="#6B5B47"
+                                CornerRadius="12"
+                                FontSize="13"
+                                FontAttributes="Bold"
+                                HeightRequest="42"
                                 Clicked="OnRefreshTabClicked" />
                     </Grid>
                 </Border>
 
                 <!-- Content Views -->
-                
+
                 <!-- Converter View -->
                 <Border x:Name="ConverterView"
-                        BackgroundColor="White" 
+                        BackgroundColor="#FFFEF7" 
                         StrokeThickness="0"
                         Stroke="Transparent"
                         IsVisible="True">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12" />
+                        <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
-                    <VerticalStackLayout Spacing="20" Padding="25">
-                        <Label Text="Omregn valuta" 
-                               FontSize="20" 
-                               FontAttributes="Bold"
-                               TextColor="#374151"
-                               HorizontalOptions="Center" />
+                    <Border.Shadow>
+                        <Shadow Brush="#30000000" Offset="0,3" Radius="10" Opacity="0.12" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="24" Padding="28">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Omregn valuta" 
+                                   FontSize="22" 
+                                   FontAttributes="Bold"
+                                   TextColor="#6B5B47"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Få de nyeste kurser med ét klik" 
+                                   FontSize="14" 
+                                   TextColor="#9B8B73"
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
 
                         <!-- Amount Input -->
-                        <VerticalStackLayout Spacing="8">
-                            <Label Text="Beløb" 
-                                   FontSize="14" 
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="💵 Beløb" 
+                                   FontSize="16" 
                                    FontAttributes="Bold"
-                                   TextColor="#374151" />
-                            <Border BackgroundColor="#F3F4F6" 
-                                    StrokeThickness="1"
-                                    Stroke="#E5E7EB">
+                                   TextColor="#6B5B47" />
+                            <Border BackgroundColor="#F7F3E9" 
+                                    StrokeThickness="2"
+                                    Stroke="#E8DCC6">
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
+                                    <RoundRectangle CornerRadius="16" />
                                 </Border.StrokeShape>
                                 <Entry x:Name="AmountEntry" 
                                        Placeholder="Indtast beløb (f.eks. 100)" 
                                        Keyboard="Numeric" 
                                        FontSize="18"
                                        BackgroundColor="Transparent"
-                                       TextColor="#374151"
-                                       PlaceholderColor="#9CA3AF"
-                                       Margin="15,12" />
+                                       TextColor="#6B5B47"
+                                       PlaceholderColor="#B5A492"
+                                       Margin="18,14" />
                             </Border>
                         </VerticalStackLayout>
 
                         <!-- Currency Selectors -->
-                        <Grid ColumnDefinitions="*,60,*" 
+                        <Grid ColumnDefinitions="*,65,*" 
                               RowDefinitions="Auto,Auto"
-                              ColumnSpacing="10" 
-                              RowSpacing="15">
-                            
+                              ColumnSpacing="12" 
+                              RowSpacing="12">
+
                             <Label Grid.Row="0" Grid.Column="0"
                                    Text="Fra valuta" 
-                                   FontSize="14" 
+                                   FontSize="16" 
                                    FontAttributes="Bold"
-                                   TextColor="#374151" />
-                            
+                                   TextColor="#6B5B47" />
+
                             <Label Grid.Row="0" Grid.Column="2"
                                    Text="Til valuta" 
-                                   FontSize="14" 
+                                   FontSize="16" 
                                    FontAttributes="Bold"
-                                   TextColor="#374151" />
-                            
+                                   TextColor="#6B5B47" />
+
                             <Border Grid.Row="1" Grid.Column="0" 
-                                    BackgroundColor="#F3F4F6" 
-                                    StrokeThickness="1"
-                                    Stroke="#E5E7EB">
+                                    BackgroundColor="#F7F3E9" 
+                                    StrokeThickness="2"
+                                    Stroke="#E8DCC6">
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
+                                    <RoundRectangle CornerRadius="16" />
                                 </Border.StrokeShape>
                                 <Picker x:Name="FromPicker" 
                                         Title="Vælg valuta"
                                         FontSize="16"
-                                        TextColor="#374151"
-                                        TitleColor="#9CA3AF"
+                                        TextColor="#6B5B47"
+                                        TitleColor="#B5A492"
                                         BackgroundColor="Transparent"
-                                        Margin="10,8" />
+                                        Margin="14,10" />
                             </Border>
 
                             <Button Grid.Row="1" Grid.Column="1" 
-                                    Text="🔀" 
+                                    Text="🔄" 
                                     FontSize="20"
-                                    BackgroundColor="#EF4444"
-                                    TextColor="White"
-                                    CornerRadius="25"
-                                    WidthRequest="50"
-                                    HeightRequest="50"
+                                    BackgroundColor="#D2691E"
+                                    TextColor="#FFFEF7"
+                                    CornerRadius="28"
+                                    WidthRequest="56"
+                                    HeightRequest="56"
                                     Clicked="OnSwapClicked"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center">
+                                <Button.Shadow>
+                                    <Shadow Brush="#40000000" Offset="0,3" Radius="6" Opacity="0.2" />
+                                </Button.Shadow>
+                            </Button>
 
                             <Border Grid.Row="1" Grid.Column="2" 
-                                    BackgroundColor="#F3F4F6" 
-                                    StrokeThickness="1"
-                                    Stroke="#E5E7EB">
+                                    BackgroundColor="#F7F3E9" 
+                                    StrokeThickness="2"
+                                    Stroke="#E8DCC6">
                                 <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="10" />
+                                    <RoundRectangle CornerRadius="16" />
                                 </Border.StrokeShape>
                                 <Picker x:Name="ToPicker" 
                                         Title="Vælg valuta"
                                         FontSize="16"
-                                        TextColor="#374151"
-                                        TitleColor="#9CA3AF"
+                                        TextColor="#6B5B47"
+                                        TitleColor="#B5A492"
                                         BackgroundColor="Transparent"
-                                        Margin="10,8" />
+                                        Margin="14,10" />
                             </Border>
                         </Grid>
 
                         <!-- Convert Button -->
-                        <Button Text="💰 Omregn valuta" 
+                        <Button Text="Omregn valuta" 
                                 FontSize="18"
                                 FontAttributes="Bold"
-                                BackgroundColor="#6366F1"
-                                TextColor="White"
-                                CornerRadius="12"
-                                HeightRequest="55"
-                                Clicked="OnConvertClicked" />
+                                BackgroundColor="#8B6F47"
+                                TextColor="#FBF8F1"
+                                CornerRadius="18"
+                                HeightRequest="58"
+                                Clicked="OnConvertClicked">
+                            <Button.Shadow>
+                                <Shadow Brush="#40000000" Offset="0,4" Radius="8" Opacity="0.25" />
+                            </Button.Shadow>
+                        </Button>
 
                         <!-- Result Display -->
                         <Border x:Name="ResultSection"
-                                BackgroundColor="#F0FDF4" 
-                                StrokeThickness="1"
-                                Stroke="#BBF7D0"
-                                IsVisible="False">
+                                BackgroundColor="#F0F8F0" 
+                                StrokeThickness="0"
+                                Stroke="Transparent">
                             <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10" />
+                                <RoundRectangle CornerRadius="16" />
                             </Border.StrokeShape>
-                            <VerticalStackLayout Spacing="10" Padding="20">
-                                <Label Text="💡 Resultat" 
-                                       FontSize="16" 
+                            <Border.Shadow>
+                                <Shadow Brush="#20000000" Offset="0,2" Radius="6" Opacity="0.1" />
+                            </Border.Shadow>
+                            <VerticalStackLayout Spacing="12" Padding="24">
+                                <Label Text="Resultat" 
+                                       FontSize="18" 
                                        FontAttributes="Bold"
-                                       TextColor="#059669"
+                                       TextColor="#2E7D32"
                                        HorizontalOptions="Center" />
-                                
+
                                 <Label x:Name="ResultLabel" 
                                        Text="" 
-                                       FontSize="22"
+                                       FontSize="24"
                                        FontAttributes="Bold"
-                                       TextColor="#059669"
+                                       TextColor="#1B5E20"
                                        HorizontalOptions="Center"
                                        HorizontalTextAlignment="Center" />
-                                
+
                                 <Label x:Name="ExchangeRateLabel" 
                                        Text="" 
-                                       FontSize="14"
-                                       TextColor="#16A34A"
+                                       FontSize="15"
+                                       TextColor="#388E3C"
                                        HorizontalOptions="Center"
                                        HorizontalTextAlignment="Center" />
                             </VerticalStackLayout>
@@ -236,48 +270,73 @@
 
                 <!-- Currencies View -->
                 <Border x:Name="CurrenciesView"
-                        BackgroundColor="White" 
+                        BackgroundColor="#FFFEF7" 
                         StrokeThickness="0"
                         Stroke="Transparent"
                         IsVisible="False"
                         MinimumHeightRequest="400">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12" />
+                        <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
-                    <VerticalStackLayout Spacing="15" Padding="25">
-                        <Label Text="📋 Tilgængelige valutaer" 
-                               FontSize="20" 
-                               FontAttributes="Bold"
-                               TextColor="#374151"
-                               HorizontalOptions="Center" />
-                        
-                        <Entry x:Name="CurrencySearchEntry"
-                               Placeholder="Søg efter valuta..."
-                               FontSize="16"
-                               BackgroundColor="#F3F4F6"
-                               TextColor="#374151"
-                               PlaceholderColor="#9CA3AF"
-                               TextChanged="OnCurrencySearchChanged" />
-                        
+                    <Border.Shadow>
+                        <Shadow Brush="#30000000" Offset="0,3" Radius="10" Opacity="0.12" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="18" Padding="28">
+                        <VerticalStackLayout Spacing="4">
+                            <Label Text="Tilgængelige valutaer" 
+                                   FontSize="22" 
+                                   FontAttributes="Bold"
+                                   TextColor="#6B5B47"
+                                   HorizontalOptions="Center" />
+                            <Label Text="Gennemse alle understøttede valutaer" 
+                                   FontSize="14" 
+                                   TextColor="#9B8B73"
+                                   HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+
+                        <Border BackgroundColor="#F7F3E9" 
+                                StrokeThickness="2"
+                                Stroke="#E8DCC6">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Entry x:Name="CurrencySearchEntry"
+                                   Placeholder="Søg efter valuta..."
+                                   FontSize="16"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#6B5B47"
+                                   PlaceholderColor="#B5A492"
+                                   Margin="18,14"
+                                   TextChanged="OnCurrencySearchChanged" />
+                        </Border>
+
                         <ScrollView MaximumHeightRequest="350">
                             <CollectionView x:Name="CurrenciesCollectionView"
                                             ItemsLayout="VerticalList">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Grid Padding="0,8" ColumnDefinitions="60,*">
-                                            <Label Grid.Column="0"
-                                                   Text="{Binding Code}"
-                                                   FontSize="14"
-                                                   FontAttributes="Bold"
-                                                   TextColor="#6366F1"
-                                                   VerticalOptions="Center" />
-                                            <Label Grid.Column="1"
-                                                   Text="{Binding Description}"
-                                                   FontSize="14"
-                                                   TextColor="#374151"
-                                                   VerticalOptions="Center"
-                                                   LineBreakMode="WordWrap" />
-                                        </Grid>
+                                    <DataTemplate x:DataType="local:CurrencyInfo">
+                                        <Border BackgroundColor="#F7F3E9" 
+                                                StrokeThickness="1"
+                                                Stroke="#E8DCC6"
+                                                Margin="0,4">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="12" />
+                                            </Border.StrokeShape>
+                                            <Grid Padding="16,12" ColumnDefinitions="70,*">
+                                                <Label Grid.Column="0"
+                                                       Text="{Binding Code}"
+                                                       FontSize="15"
+                                                       FontAttributes="Bold"
+                                                       TextColor="#8B6F47"
+                                                       VerticalOptions="Center" />
+                                                <Label Grid.Column="1"
+                                                       Text="{Binding Description}"
+                                                       FontSize="15"
+                                                       TextColor="#6B5B47"
+                                                       VerticalOptions="Center"
+                                                       LineBreakMode="WordWrap" />
+                                            </Grid>
+                                        </Border>
                                     </DataTemplate>
                                 </CollectionView.ItemTemplate>
                             </CollectionView>
@@ -287,72 +346,84 @@
 
                 <!-- Rates View -->
                 <Border x:Name="RatesView"
-                        BackgroundColor="White" 
+                        BackgroundColor="#FFFEF7" 
                         StrokeThickness="0"
-                        Stroke="Transparent"
-                        IsVisible="False"
-                        MinimumHeightRequest="400">
+                        Stroke="Transparent">
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="12" />
+                        <RoundRectangle CornerRadius="20" />
                     </Border.StrokeShape>
-                    <VerticalStackLayout Spacing="15" Padding="25">
-                        <VerticalStackLayout Spacing="5">
-                            <Label Text="📊 Aktuelle valutakurser" 
-                                   FontSize="20" 
+                    <Border.Shadow>
+                        <Shadow Brush="#30000000" Offset="0,3" Radius="10" Opacity="0.12" />
+                    </Border.Shadow>
+                    <VerticalStackLayout Spacing="18" Padding="28">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="Aktuelle valutakurser" 
+                                   FontSize="22" 
                                    FontAttributes="Bold"
-                                   TextColor="#374151"
+                                   TextColor="#6B5B47"
                                    HorizontalOptions="Center" />
                             <Label x:Name="RatesDateLabel" 
                                    Text="" 
-                                   FontSize="12"
-                                   TextColor="#6B7280"
+                                   FontSize="13"
+                                   TextColor="#9B8B73"
                                    HorizontalOptions="Center" />
                         </VerticalStackLayout>
-                        
-                        <Entry x:Name="RateSearchEntry"
-                               Placeholder="Søg efter valuta..."
-                               FontSize="16"
-                               BackgroundColor="#F3F4F6"
-                               TextColor="#374151"
-                               PlaceholderColor="#9CA3AF"
-                               TextChanged="OnRateSearchChanged" />
-                        
+
+                        <Border BackgroundColor="#F7F3E9" 
+                                StrokeThickness="2"
+                                Stroke="#E8DCC6">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="16" />
+                            </Border.StrokeShape>
+                            <Entry x:Name="RateSearchEntry"
+                                   Placeholder="Søg efter valuta..."
+                                   FontSize="16"
+                                   BackgroundColor="Transparent"
+                                   TextColor="#6B5B47"
+                                   PlaceholderColor="#B5A492"
+                                   Margin="18,14"
+                                   TextChanged="OnRateSearchChanged" />
+                        </Border>
+
                         <ScrollView MaximumHeightRequest="350">
                             <CollectionView x:Name="RatesCollectionView"
                                             ItemsLayout="VerticalList">
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border BackgroundColor="#F9FAFB" 
+                                    <DataTemplate x:DataType="local:RateInfo">
+                                        <Border BackgroundColor="#F7F3E9" 
                                                 StrokeThickness="1"
-                                                Stroke="#E5E7EB"
-                                                Margin="0,4">
+                                                Stroke="#E8DCC6"
+                                                Margin="0,6">
                                             <Border.StrokeShape>
-                                                <RoundRectangle CornerRadius="8" />
+                                                <RoundRectangle CornerRadius="14" />
                                             </Border.StrokeShape>
-                                            <Grid Padding="15,12" 
-                                                  ColumnDefinitions="60,*,80"
+                                            <Border.Shadow>
+                                                <Shadow Brush="#20000000" Offset="0,1" Radius="3" Opacity="0.08" />
+                                            </Border.Shadow>
+                                            <Grid Padding="18,15" 
+                                                  ColumnDefinitions="70,*,90"
                                                   RowDefinitions="Auto,Auto">
                                                 <Label Grid.Row="0" Grid.Column="0"
                                                        Text="{Binding Code}"
-                                                       FontSize="16"
+                                                       FontSize="17"
                                                        FontAttributes="Bold"
-                                                       TextColor="#6366F1" />
+                                                       TextColor="#8B6F47" />
                                                 <Label Grid.Row="0" Grid.Column="1"
                                                        Text="{Binding Description}"
-                                                       FontSize="14"
-                                                       TextColor="#374151"
+                                                       FontSize="15"
+                                                       TextColor="#6B5B47"
                                                        LineBreakMode="WordWrap" />
                                                 <Label Grid.Row="0" Grid.Column="2"
                                                        Text="{Binding Rate}"
-                                                       FontSize="14"
+                                                       FontSize="15"
                                                        FontAttributes="Bold"
-                                                       TextColor="#059669"
+                                                       TextColor="#2E7D32"
                                                        HorizontalOptions="End" />
                                                 <Label Grid.Row="1" Grid.ColumnSpan="3"
                                                        Text="{Binding RateDescription}"
-                                                       FontSize="12"
-                                                       TextColor="#6B7280"
-                                                       Margin="0,4,0,0" />
+                                                       FontSize="13"
+                                                       TextColor="#9B8B73"
+                                                       Margin="0,6,0,0" />
                                             </Grid>
                                         </Border>
                                     </DataTemplate>
@@ -367,23 +438,30 @@
 
         <!-- Status Bar -->
         <Border Grid.Row="2" 
-                BackgroundColor="#374151" 
+                BackgroundColor="#8B6F47" 
                 StrokeThickness="0"
                 Stroke="Transparent">
-            <HorizontalStackLayout Spacing="15" 
-                                   Padding="20,12"
+            <HorizontalStackLayout Spacing="12" 
+                                   Padding="20,14"
                                    HorizontalOptions="Center">
                 <Label x:Name="StatusLabel" 
                        Text="Klar" 
-                       FontSize="12"
-                       TextColor="White" />
+                       FontSize="13"
+                       FontAttributes="Bold"
+                       TextColor="#FBF8F1" />
                 <Label Text="•" 
-                       FontSize="12"
-                       TextColor="#9CA3AF" />
+                       FontSize="13"
+                       TextColor="#E8DCC6" />
                 <Label x:Name="CurrencyCountLabel" 
-                       Text="0 valutaer" 
-                       FontSize="12"
-                       TextColor="#9CA3AF" />
+                       Text="Valuta" 
+                       FontSize="13"
+                       TextColor="#E8DCC6" />
+                <Label Text="•" 
+                       FontSize="13"
+                       TextColor="#E8DCC6" />
+                <Label Text="ver.1.2.0" 
+                       FontSize="13"
+                       TextColor="#E8DCC6" />
             </HorizontalStackLayout>
         </Border>
 

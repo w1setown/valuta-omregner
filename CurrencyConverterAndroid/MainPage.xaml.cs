@@ -204,8 +204,9 @@ public partial class MainPage : ContentPage
 
     private void SetActiveTabButton(Button button)
     {
-        button.BackgroundColor = Color.FromArgb("#6366F1");
-        button.TextColor = Colors.White;
+    // Use the same brown/cream theme as the default
+    button.BackgroundColor = Color.FromArgb("#8B6F47"); // brown
+    button.TextColor = Color.FromArgb("#FBF8F1"); // cream
     }
 
     // Search functionality
